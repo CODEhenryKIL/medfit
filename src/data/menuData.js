@@ -56,7 +56,6 @@ export const menuItems = [
                 topping: [{ name: "닭 40g", isDefault: false }, { name: "흰살생선", isDefault: false }]
             }
         },
-        // Fallback options for nutrition calc (simplified for now, using dummy values for new items)
         options: {
             noodle: [
                 { name: "두부면", cal: 0, protein: 0, fat: 0, carbs: 0 },
@@ -223,12 +222,14 @@ export const menuItems = [
         baseNutrition: { calories: 380, protein: 25, fat: 14, carbs: 35 },
         variations: {
             default: {
-                topping: [{ name: "시금치", isDefault: true }, { name: "버섯", isDefault: true }, { name: "마늘 후레이크", isDefault: true }],
+                dough: [{ name: "통밀 저탄수", isDefault: true }],
+                vegetables: [{ name: "시금치", isDefault: true }, { name: "버섯", isDefault: true }, { name: "마늘 후레이크", isDefault: true }],
                 cheese: [{ name: "페타치즈", isDefault: true }],
                 sauce: [{ name: "무설탕 토마토 소스", isDefault: true }, { name: "발사믹 글레이즈(저당)", isDefault: true }]
             },
             cancer: {
-                topping: [
+                dough: [{ name: "순두부 또띠아", isDefault: true }, { name: "통밀", isDefault: false }],
+                vegetables: [
                     { name: "시금치", isDefault: true }, { name: "비트", isDefault: true }, { name: "당근", isDefault: true }, { name: "가지", isDefault: true },
                     { name: "방울 양배추", isDefault: false }, { name: "적양배추", isDefault: false }, { name: "고구마 슬라이스(소량)", isDefault: false }, { name: "구운 레드 어니언", isDefault: false }
                 ],
@@ -237,7 +238,8 @@ export const menuItems = [
                 sauce: [{ name: "허브 올리브 오일", isDefault: true }]
             },
             diabetes: {
-                topping: [
+                dough: [{ name: "통밀", isDefault: true }],
+                vegetables: [
                     { name: "버섯", isDefault: true }, { name: "브로콜리", isDefault: true }, { name: "양파", isDefault: true }, { name: "파프리카", isDefault: true },
                     { name: "아티초크", isDefault: false }, { name: "구운 배추", isDefault: false }, { name: "주키니", isDefault: false }
                 ],
@@ -246,7 +248,8 @@ export const menuItems = [
                 sauce: [{ name: "무설탕 토마토 소스", isDefault: true }]
             },
             highBloodPressure: {
-                topping: [
+                dough: [{ name: "통밀", isDefault: true }],
+                vegetables: [
                     { name: "시금치", isDefault: true }, { name: "토마토", isDefault: true }, { name: "주키니", isDefault: true }, { name: "파프리카", isDefault: true },
                     { name: "구운 버섯 믹스", isDefault: false }, { name: "무화과", isDefault: false }, { name: "구운 양파", isDefault: false }, { name: "가지", isDefault: false }
                 ],
@@ -255,7 +258,8 @@ export const menuItems = [
                 sauce: [{ name: "무염 토마토 소스", isDefault: true }]
             },
             kidneyDisease: {
-                topping: [
+                dough: [{ name: "밀", isDefault: true }, { name: "우유 또띠아", isDefault: false }],
+                vegetables: [
                     { name: "양배추", isDefault: true }, { name: "양상추", isDefault: true }, { name: "파프리카", isDefault: true },
                     { name: "버터헤드 레터스", isDefault: false }, { name: "구운 무", isDefault: false }, { name: "적근대(소량)", isDefault: false }, { name: "오이 슬라이스", isDefault: false }
                 ],
@@ -265,7 +269,14 @@ export const menuItems = [
             }
         },
         options: {
-            topping: [
+            dough: [
+                { name: "통밀 저탄수", cal: 100, protein: 5, fat: 2, carbs: 15 },
+                { name: "순두부 또띠아", cal: 80, protein: 6, fat: 3, carbs: 5 },
+                { name: "통밀", cal: 110, protein: 5, fat: 2, carbs: 18 },
+                { name: "밀", cal: 120, protein: 4, fat: 1, carbs: 25 },
+                { name: "우유 또띠아", cal: 90, protein: 4, fat: 3, carbs: 10 }
+            ],
+            vegetables: [
                 { name: "시금치", cal: 5, protein: 0.5, fat: 0, carbs: 1 },
                 { name: "버섯", cal: 10, protein: 1, fat: 0, carbs: 1 },
                 { name: "마늘 후레이크", cal: 15, protein: 0, fat: 0, carbs: 3 },

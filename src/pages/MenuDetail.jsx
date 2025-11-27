@@ -40,9 +40,6 @@ const MenuDetail = () => {
             const initialSelections = {};
             Object.keys(activeVariation).forEach(key => {
                 const options = activeVariation[key];
-                // Check if it's a multiple selection category (vegetables, topping for some menus)
-                // Logic: If multiple defaults exist, it's likely a multiple selection field.
-                // Or we can stick to hardcoded multiple fields: vegetables, topping (for pizza/pasta), etc.
                 const isMultiple = ['vegetables', 'topping'].includes(key);
 
                 if (isMultiple) {
@@ -63,7 +60,6 @@ const MenuDetail = () => {
 
             Object.keys(selections).forEach(category => {
                 const selectedValue = selections[category];
-                // Look up nutrition info from the global options pool
                 const globalOptions = item.options[category];
 
                 if (!globalOptions) return;
@@ -89,7 +85,6 @@ const MenuDetail = () => {
                 }
             });
 
-            // Round values
             const finalNutrition = {
                 calories: Math.round(newNut.calories),
                 protein: Math.round(newNut.protein * 10) / 10,
@@ -167,13 +162,14 @@ const MenuDetail = () => {
 
     const categoryLabels = {
         noodle: '면 선택',
-        vegetables: '채소 (다중 선택)',
+        vegetables: item.id === 1 ? '채소 (다중 선택)' : '채소 토핑',
         dressing: '드레싱',
         grain: '곡물 선택',
         sauce: '소스 선택',
         topping: '토핑 추가',
         protein: '단백질',
-        cheese: '치즈'
+        cheese: '치즈',
+        dough: '도우 선택'
     };
 
     const variationLabels = {
@@ -183,6 +179,19 @@ const MenuDetail = () => {
         highBloodPressure: '고혈압 환자용 구성',
         kidneyDisease: '신장질환 환자용 구성'
     };
+
+    // Define category display order for each menu
+    const getCategoryOrder = (menuId) => {
+        if (menuId === 2) { // Risotto
+            return ['grain', 'sauce', 'protein', 'topping'];
+        } else if (menuId === 3) { // Pizza
+            return ['dough', 'sauce', 'cheese', 'vegetables', 'protein'];
+        } else { // Default (e.g., Pasta)
+            return ['noodle', 'sauce', 'vegetables', 'topping'];
+        }
+    };
+
+    const categoryOrder = getCategoryOrder(item.id);
 
     return (
         <div className="container" style={{ paddingBottom: '80px' }}>
@@ -248,7 +257,7 @@ const MenuDetail = () => {
 
             <div className="card" style={{ backgroundColor: '#F1F8E9', border: '1px solid #C5E1A5' }}>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: '12px', color: 'var(--color-primary-dark)' }}>영양 성분</h3>
-                <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center', gap: '24px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center', gap: '32px' }}>
                     <div>
                         <div style={{ fontWeight: '800', fontSize: '1.2rem', color: 'var(--color-primary)' }}>{nutrition.calories}</div>
                         <div style={{ fontSize: '0.8rem', color: '#757575' }}>kcal</div>
@@ -268,7 +277,7 @@ const MenuDetail = () => {
                     {/* Suitability Score */}
                     <div style={{
                         borderLeft: '1px solid #C5E1A5',
-                        paddingLeft: '24px',
+                        paddingLeft: '32px',
                         marginLeft: '0px'
                     }}>
                         <div style={{ fontWeight: '800', fontSize: '1.4rem', color: 'var(--color-primary-dark)' }}>{suitabilityScore}</div>
@@ -279,7 +288,7 @@ const MenuDetail = () => {
 
             <h3 style={{ fontSize: '1.2rem', marginBottom: '16px', marginTop: '32px' }}>나만의 메뉴 만들기</h3>
 
-            {Object.keys(activeVariation).map(category => {
+            {categoryOrder.map(category => {
                 const options = activeVariation[category];
                 // Hide category if no options available
                 if (!options || options.length === 0) return null;
