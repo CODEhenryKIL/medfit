@@ -21,6 +21,12 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Force blur to close keyboard on mobile
+        if (document.activeElement) {
+            document.activeElement.blur();
+        }
+
         // Save basic info to localStorage
         const existingData = JSON.parse(localStorage.getItem('userHealthData') || '{}');
         localStorage.setItem('userHealthData', JSON.stringify({ ...existingData, ...formData }));

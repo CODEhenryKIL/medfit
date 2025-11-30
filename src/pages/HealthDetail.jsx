@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const HealthDetail = () => {
     const navigate = useNavigate();
+
+    // Force scroll to top on mount
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [step, setStep] = useState(1);
     const [hasDisease, setHasDisease] = useState(null); // true, false, or null
     const [selectedDiseases, setSelectedDiseases] = useState([]);
