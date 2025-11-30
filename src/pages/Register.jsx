@@ -89,6 +89,9 @@ const Register = () => {
                                 placeholderText="생년월일"
                                 wrapperClassName="date-picker-wrapper"
                                 popperPlacement="bottom-start"
+                                showYearDropdown
+                                showMonthDropdown
+                                dropdownMode="select"
                                 customInput={
                                     <input
                                         style={{
