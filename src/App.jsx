@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Landing from './pages/Landing';
 import Register from './pages/Register';
-import HealthResult from './pages/HealthResult';
 import HealthDetail from './pages/HealthDetail';
 import MenuRecommendation from './pages/MenuRecommendation';
 import MenuDetail from './pages/MenuDetail';
@@ -17,7 +16,6 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/health-detail" element={<HealthDetail />} />
-        <Route path="/result" element={<HealthResult />} />
         <Route path="/recommendation" element={<MenuRecommendation />} />
         <Route path="/menu/:id" element={<MenuDetail />} />
         <Route path="/order-complete" element={<OrderComplete />} />
