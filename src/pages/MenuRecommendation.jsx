@@ -50,7 +50,7 @@ const MenuRecommendation = () => {
                         }}
                     >
                         <div style={{
-                            height: '240px',
+                            height: '200px',
                             backgroundColor: featuredMenu.imageColor,
                             position: 'relative',
                             overflow: 'hidden'
@@ -81,7 +81,7 @@ const MenuRecommendation = () => {
                         </div>
                         <div style={{ padding: '24px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                                <h3 style={{ fontSize: '1.2rem', color: '#333', fontWeight: '700' }}>{featuredMenu.name}</h3>
+                                <h3 style={{ fontSize: '1.3rem', color: '#333', fontWeight: '700', wordBreak: 'keep-all' }}>{featuredMenu.name}</h3>
                                 <span style={{
                                     backgroundColor: 'var(--color-primary-light)',
                                     color: 'var(--color-primary-dark)',

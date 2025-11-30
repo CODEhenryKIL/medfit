@@ -73,21 +73,44 @@ const Register = () => {
                         />
                     </div>
                     <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
-                        <div style={{ flex: '1 1 0', minWidth: 0 }}> {/* Use flex-basis 0 and min-width 0 to force equal width */}
+                        <div style={{ flex: '1 1 0', minWidth: 0, position: 'relative' }}>
                             <label style={labelStyle}>생년월일</label>
-                            <input
-                                type="date"
-                                name="birthdate"
-                                value={formData.birthdate}
-                                onChange={handleInputChange}
-                                style={{
-                                    ...inputStyle,
-                                    width: '100%',
-                                    minWidth: 0,
-                                    height: '54px' /* Match standard height */
-                                }}
-                                required
-                            />
+                            <div style={{ position: 'relative', width: '100%', height: '54px' }}>
+                                {/* Custom Placeholder Overlay */}
+                                {!formData.birthdate && (
+                                    <span style={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '16px',
+                                        transform: 'translateY(-50%)',
+                                        color: '#aaa', // Placeholder color
+                                        fontSize: '16px',
+                                        pointerEvents: 'none', // Allow clicks to pass through to input
+                                        zIndex: 0
+                                    }}>
+                                        생년월일
+                                    </span>
+                                )}
+                                <input
+                                    type="date"
+                                    name="birthdate"
+                                    value={formData.birthdate}
+                                    onChange={handleInputChange}
+                                    style={{
+                                        ...inputStyle,
+                                        width: '100%',
+                                        minWidth: 0,
+                                        height: '100%',
+                                        position: 'relative',
+                                        zIndex: 1,
+                                        background: 'transparent', // Make background transparent to show placeholder if needed, but we use opacity
+                                        opacity: formData.birthdate ? 1 : 0, // Hide input text when empty (showing placeholder instead)
+                                        appearance: 'none', // Try to remove default styling again just in case, but opacity handles visibility
+                                        WebkitAppearance: 'none'
+                                    }}
+                                    required
+                                />
+                            </div>
                         </div>
                         <div style={{ flex: '1 1 0', minWidth: 0 }}>
                             <label style={labelStyle}>성별</label>

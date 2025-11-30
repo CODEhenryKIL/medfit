@@ -43,7 +43,7 @@ const OrderComplete = () => {
                 <div style={{ marginBottom: '16px', color: '#666', fontSize: '0.95rem' }}>
                     {Object.entries(order.options).map(([key, value]) => (
                         <div key={key} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                            <span style={{ textTransform: 'capitalize' }}>{key === 'vegetables' ? '채소' : key === 'noodle' ? '면' : key === 'grain' ? '곡물' : key === 'sauce' ? '소스' : key === 'topping' ? '토핑' : key === 'dressing' ? '드레싱' : key}</span>
+                            <span style={{ textTransform: 'capitalize', whiteSpace: 'nowrap', flexShrink: 0, marginRight: '8px' }}>{key === 'vegetables' ? '채소' : key === 'noodle' ? '면' : key === 'grain' ? '곡물' : key === 'sauce' ? '소스' : key === 'topping' ? '토핑' : key === 'dressing' ? '드레싱' : key}</span>
                             <span>{Array.isArray(value) ? value.join(', ') : value}</span>
                         </div>
                     ))}
