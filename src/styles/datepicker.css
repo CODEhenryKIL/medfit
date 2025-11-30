@@ -1,0 +1,54 @@
+/* Custom styles for React Datepicker to match the app theme */
+.date-picker-wrapper {
+    width: 100%;
+    display: block;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container {
+    width: 100%;
+}
+
+/* Ensure the input matches our design */
+.react-datepicker__input-container input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Customize the calendar header */
+.react-datepicker__header {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.react-datepicker__current-month {
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+.react-datepicker__day-name {
+    color: var(--color-text-sub);
+}
+
+/* Selected day */
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+    border-radius: 50%;
+}
+
+/* Today */
+.react-datepicker__day--today {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+/* Hover state */
+.react-datepicker__day:hover {
+    background-color: var(--color-primary-light);
+    border-radius: 50%;
+}

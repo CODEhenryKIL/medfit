@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import '../styles/datepicker.css';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -75,43 +78,27 @@ const Register = () => {
                     <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
                         <div style={{ flex: '1 1 0', minWidth: 0, position: 'relative' }}>
                             <label style={labelStyle}>생년월일</label>
-                            <div style={{ position: 'relative', width: '100%', height: '54px' }}>
-                                {/* Custom Placeholder Overlay */}
-                                {!formData.birthdate && (
-                                    <span style={{
-                                        position: 'absolute',
-                                        top: '50%',
-                                        left: '16px',
-                                        transform: 'translateY(-50%)',
-                                        color: '#9E9E9E', // Standard placeholder gray
-                                        fontSize: '16px',
-                                        fontWeight: '400', // Ensure normal weight for placeholder
-                                        pointerEvents: 'none', // Allow clicks to pass through to input
-                                        zIndex: 0
-                                    }}>
-                                        생년월일
-                                    </span>
-                                )}
-                                <input
-                                    type="date"
-                                    name="birthdate"
-                                    value={formData.birthdate}
-                                    onChange={handleInputChange}
-                                    style={{
-                                        ...inputStyle,
-                                        width: '100%',
-                                        minWidth: 0,
-                                        height: '100%',
-                                        position: 'relative',
-                                        zIndex: 1,
-                                        background: 'transparent', // Make background transparent to show placeholder if needed, but we use opacity
-                                        opacity: formData.birthdate ? 1 : 0, // Hide input text when empty (showing placeholder instead)
-                                        appearance: 'none', // Try to remove default styling again just in case, but opacity handles visibility
-                                        WebkitAppearance: 'none'
-                                    }}
-                                    required
-                                />
-                            </div>
+                            <DatePicker
+                                selected={formData.birthdate ? new Date(formData.birthdate) : null}
+                                onChange={(date) => {
+                                    // Format date as YYYY-MM-DD
+                                    const formattedDate = date ? date.toISOString().split('T')[0] : '';
+                                    setFormData(prev => ({ ...prev, birthdate: formattedDate }));
+                                }}
+                                dateFormat="yyyy-MM-dd"
+                                placeholderText="생년월일"
+                                wrapperClassName="date-picker-wrapper"
+                                customInput={
+                                    <input
+                                        style={{
+                                            ...inputStyle,
+                                            width: '100%',
+                                            height: '54px'
+                                        }}
+                                    />
+                                }
+                                required
+                            />
                         </div>
                         <div style={{ flex: '1 1 0', minWidth: 0 }}>
                             <label style={labelStyle}>성별</label>
