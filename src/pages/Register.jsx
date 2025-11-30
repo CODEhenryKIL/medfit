@@ -88,6 +88,7 @@ const Register = () => {
                                 dateFormat="yyyy-MM-dd"
                                 placeholderText="생년월일"
                                 wrapperClassName="date-picker-wrapper"
+                                popperPlacement="bottom-start"
                                 customInput={
                                     <input
                                         style={{
